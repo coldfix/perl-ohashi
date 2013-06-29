@@ -2,10 +2,10 @@ use warnings;
 use strict;
 
 package ohashi;
-
 use Tie::Hash;  # contains Tie::StdHash
-use Tie::IxHash;
 use base 'Tie::StdHash';
+
+use ohash;
 
 
 sub new
@@ -19,8 +19,8 @@ sub new
 sub TIEHASH
 {
     my ($class) = shift;
-    tie(my (%initial), 'Tie::IxHash', @_);
-    tie(my (%oc), 'Tie::IxHash');
+    tie(my (%initial), 'ohash', @_);
+    tie(my (%oc), 'ohash');
     my $this = {lc=>{}, oc=>\%oc};
 
     while (my ($key, $value) = each(%initial)) {
