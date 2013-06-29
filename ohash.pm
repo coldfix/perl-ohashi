@@ -94,8 +94,9 @@ sub _append
         undef,          # key of next element
         undef,          # value
     ];
-    $root[0] = $key;
-    ${$data->[$node->[0]] // $root}[1] = $key;
+    $root->[0] = $key;
+    ${$data->{$node->[0]} // $root}[1] = $key;
+    $data->{$key} = $node;
     return $node;
 }
 
