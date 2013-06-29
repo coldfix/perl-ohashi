@@ -67,8 +67,8 @@ sub DELETE
     my ($this, $key) = @_;
     my ($data, $root) = @$this;
     my $node = $data->{$key};
-    ${$data->{$node->[0]} // $root}[1] = $node->[1];
-    ${$data->{$node->[1]} // $root}[0] = $node->[0];
+    ${_get($this, $node->[0])}[1] = $node->[1];
+    ${_get($this, $node->[1])}[0] = $node->[0];
     delete $data->{$key};
 }
 
@@ -84,6 +84,12 @@ sub CLEAR
 }
 
 
+sub _get
+{
+    my ($this, $key) = @_;
+    return defined($key) ? $this->[0]{$key} : $this->[1];
+}
+
 sub _append
 {
     my ($this, $key) = @_;
@@ -95,7 +101,7 @@ sub _append
         undef,          # value
     ];
     $root->[0] = $key;
-    ${$data->{$node->[0]} // $root}[1] = $key;
+    ${_get($this, $node->[0])}[1] = $key;
     $data->{$key} = $node;
     return $node;
 }
