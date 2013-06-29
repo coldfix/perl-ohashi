@@ -1,7 +1,7 @@
 use warnings;
 use strict;
 
-package odicti;
+package ohashi;
 
 use Tie::Hash;  # contains Tie::StdHash
 use Tie::IxHash;
