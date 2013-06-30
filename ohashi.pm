@@ -1,10 +1,4 @@
-use warnings;
-use strict;
-
 package ohashi;
-use Tie::Hash;  # contains Tie::StdHash
-use base 'Tie::StdHash';
-
 use ohash;
 
 
