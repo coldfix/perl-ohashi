@@ -1,4 +1,5 @@
 package ohashi;
+use 5.010;
 use ohash;
 
 

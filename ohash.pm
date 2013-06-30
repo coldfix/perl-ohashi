@@ -1,4 +1,5 @@
 package ohash;
+use 5.010;
 
 sub new
 {
