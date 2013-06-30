@@ -14,15 +14,14 @@ sub new
 sub TIEHASH
 {
     my ($class) = shift;
-    tie(my (%initial), 'ohash', @_);
     tie(my (%oc), 'ohash');
     my $this = [
         {},     # lowercase key => data
         \%oc    # lowercase key => original case key
     ];
 
-    while (my ($key, $value) = each(%initial)) {
-        STORE($this, $key, $value);
+    while (@_) {
+        STORE($this, shift, shift);
     }
 
     return bless($this, $class);
