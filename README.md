@@ -15,17 +15,23 @@ Very lightweight order-preserving case-insensitive hashes for perl.
 
 `ohashi`s can be created as references:
 
-    my $x = new ohashi(alpha => 'foo', beta => 'bar');
-    print $x->{AlpHA};    # prints 'foo'
+```perl
+my $x = new ohashi(alpha => 'foo', beta => 'bar');
+print $x->{AlpHA};    # prints 'foo'
+```
 
 or tied to a new variable:
 
-    tie (my %x, 'ohashi',
-        alpha => 1, beta => 2));
+```perl
+tie (my %x, 'ohashi',
+    alpha => 1, beta => 2));
+```
 
 
 **Don't** try this:
 
-    my %x = (pi => 3.14);
-    tie (%x, 'ohashi');
+```perl
+my %x = (pi => 3.14);
+tie (%x, 'ohashi');
+```
 
